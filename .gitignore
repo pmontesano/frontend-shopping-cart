@@ -1,0 +1,16 @@
+# Logs
+*.log
+
+# Dependency directory
+node_modules
+
+# Trash
+.DS_Store
+.vscode
+
+# Dynamically processed files
+build
+dist
+
+# Mocks
+
