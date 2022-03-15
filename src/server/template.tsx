@@ -1,4 +1,4 @@
-const root = (component, initialState) =>
+const root = (component: any, initialState: object) =>
   `<!doctype html>
         <html>
         <head>
