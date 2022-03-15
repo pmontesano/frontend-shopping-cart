@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Price = ({ amount, currency, className }) => {
+interface PriceProps {
+  className: string;
+  amount: number;
+  currency: string;
+}
+
+const Price = ({ className, amount, currency }: PriceProps) => {
   return (
     <div className={className}>
       <span className='product-price'>{amount}</span>

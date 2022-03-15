@@ -1,17 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, RootStateOrAny } from 'react-redux';
 import Checkout from '../checkout';
 import { sumFunc, formatPrice } from '../../utils';
 
 const Summary = () => {
-  const productsState = useSelector((state) => state);
+  const productsState = useSelector((state: RootStateOrAny) => state);
 
   const { productsList } = productsState.products;
 
-  const totalItems = productsList.map((p) => p.quantity.qty);
-  const totalPrice = productsList.map((p) => p.price.amount * p.quantity.qty);
+  const totalItems = productsList.map((p: any) => p.quantity.qty);
+  const totalPrice = productsList.map(
+    (p: any) => p.price.amount * p.quantity.qty
+  );
 
-  const cart = [];
+  const cart: [] = [];
   const co = new Checkout(productsList, cart);
 
   // scanning products

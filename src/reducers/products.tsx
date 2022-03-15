@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-export const productsReducer = (state = initialState, action) => {
+export const productsReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case PRODUCTS_DATA:
       return {
@@ -20,9 +20,11 @@ export const productsReducer = (state = initialState, action) => {
       };
     case INCREASE_QUANTITY:
       if (
-        state.productsList.find((product) => product.id === action.payload.id)
+        state.productsList.find(
+          (product: any) => product.id === action.payload.id
+        )
       ) {
-        const items = state.productsList.map((x) =>
+        const items = state.productsList.map((x: any) =>
           x.id === action.payload.id
             ? {
                 ...x,
@@ -40,11 +42,15 @@ export const productsReducer = (state = initialState, action) => {
           loading: false,
         };
       }
+      break;
+
     case DECREASE_QUANTITY:
       if (
-        state.productsList.find((product) => product.id === action.payload.id)
+        state.productsList.find(
+          (product: any) => product.id === action.payload.id
+        )
       ) {
-        const items = state.productsList.map((x) =>
+        const items = state.productsList.map((x: any) =>
           x.id === action.payload.id
             ? {
                 ...x,
@@ -62,12 +68,15 @@ export const productsReducer = (state = initialState, action) => {
           loading: false,
         };
       }
+      break;
 
     case SET_QUANTITY:
       if (
-        state.productsList.find((product) => product.id === action.payload.id)
+        state.productsList.find(
+          (product: any) => product.id === action.payload.id
+        )
       ) {
-        const items = state.productsList.map((x) => {
+        const items = state.productsList.map((x: any) => {
           x.id === action.payload.id
             ? {
                 ...x,
@@ -85,6 +94,7 @@ export const productsReducer = (state = initialState, action) => {
           loading: false,
         };
       }
+      break;
 
     default:
       return state;

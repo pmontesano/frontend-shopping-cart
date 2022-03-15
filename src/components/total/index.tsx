@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Total = ({ className, currency, total }) => {
+interface TotalProps {
+  className: string;
+  currency: string;
+  total: number;
+}
+
+const Total = ({ className, currency, total }: TotalProps) => {
   return (
     <div className={className}>
       <span className='product-price'>{total}</span>

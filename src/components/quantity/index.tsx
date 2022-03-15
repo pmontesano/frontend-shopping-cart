@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { increaseQty, decreaseQty, setQty } from '../../actions/quantity';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { increaseQty, decreaseQty } from '../../actions/quantity';
 
-const Quantity = ({ className, id, quantity }) => {
+interface QuantityProps {
+  id: string;
+  quantity: any;
+}
+
+const Quantity = ({ id, quantity }: QuantityProps) => {
   const dispatch = useDispatch();
 
   const { qty, available_qty: availableQuantity } = quantity;
 
   return (
-    <div className={className}>
+    <div>
       <button
         disabled={qty === 1}
         className='count'

@@ -6,7 +6,12 @@ import Total from '../total';
 import ModalComponent from '../modal';
 import ProductDetail from './detail';
 
-const Products = ({ title, products }) => {
+interface ProductsProps {
+  title: string;
+  products: any;
+}
+
+const Products = ({ title, products }: ProductsProps) => {
   const { productsList } = products;
 
   const [productState, setProductState] = useState([]);
@@ -15,7 +20,7 @@ const Products = ({ title, products }) => {
     setmodalOpen(true);
   };
 
-  const handleOnClick = (product) => {
+  const handleOnClick = (product: any) => {
     setProductState(product);
     handleModalOpen();
   };
@@ -31,7 +36,7 @@ const Products = ({ title, products }) => {
     { title: 'Total', name: 'total' },
   ];
 
-  const ModalView = ({ product }) => (
+  const ModalView = ({ product }: any) => (
     <ModalComponent modalOpen={modalOpen} handleModalClose={handleModalClose}>
       <ProductDetail {...product} />
     </ModalComponent>
@@ -50,7 +55,7 @@ const Products = ({ title, products }) => {
         </li>
       </ul>
       <ul className='products-list'>
-        {productsList?.map((product) => {
+        {productsList?.map((product: any) => {
           const colList = [
             {
               component: (

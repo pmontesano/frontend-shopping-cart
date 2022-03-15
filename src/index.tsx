@@ -2,10 +2,15 @@ import React from 'react';
 import MainLayout from './components/mainLayout';
 import ShoppingCart from './pages/shoppingCart';
 
-const App = ({ shoppingCart, loading }) => {
+interface AppProps {
+  shoppingCart: any;
+  loading: boolean;
+}
+
+const App = ({ shoppingCart, loading }: AppProps) => {
   return (
     <MainLayout>
-      <ShoppingCart {...shoppingCart} />
+      <ShoppingCart {...shoppingCart} loading={loading} />
     </MainLayout>
   );
 };

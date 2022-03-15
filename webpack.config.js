@@ -8,7 +8,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src/client'),
 
   entry: {
-    app: './index.js',
+    app: './index.tsx',
   },
 
   plugins: [

@@ -6,10 +6,10 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  products: [],
+  loading: false,
 };
 
-export const summaryReducer = (state = initialState, action) => {
+export const fetchDataReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case FETCH_START:
       return {

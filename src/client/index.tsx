@@ -8,6 +8,12 @@ import '../styles/main.scss';
 
 import App from '../index';
 
+declare global {
+  interface Window {
+    _PRELOADED_STATE: any;
+  }
+}
+
 const preloadedState = window._PRELOADED_STATE;
 
 const initReducer = reducer;

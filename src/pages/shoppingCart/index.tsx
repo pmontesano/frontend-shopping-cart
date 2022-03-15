@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { getProduts } from '../../actions/products';
 import Products from '../../components/products';
 import Summary from '../../components/summary';
 
-const ShoppingCart = ({ title, products }) => {
+interface ShoppingCart {
+  title: string;
+  products: any;
+}
+
+const ShoppingCart = ({ title, products }: ShoppingCart) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProduts(products));
   }, []);
 
-  const productsState = useSelector((state) => state.products);
+  const productsState = useSelector((state: RootStateOrAny) => state.products);
 
   return (
     <>

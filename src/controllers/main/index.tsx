@@ -1,4 +1,4 @@
-import React from 'react';
+import { NextFunction, Request, Response } from 'express';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReactDOMServer from 'react-dom/server';
@@ -14,25 +14,25 @@ const store = createStore(initReducer, applyMiddleware(asyncMiddleware));
 /**
  * Fetch Site data
  */
-exports.fetchData = (req, res, next) => {
+export const fetchData = (req: Request, res: Response, next: NextFunction) => {
   Service()
-    .get.then((data) => {
+    .get.then((data: any) => {
       const results = data.data;
       store.dispatch(fetchInitialData(results));
-      res.data = results;
       next();
     })
-    .catch((err) => {
-      next(new Error(err));
+    .catch((err: Error) => {
+      res.status(500).json({ message: err.message });
+      next();
     });
 };
 
 /**
  * Render view
  */
-exports.render = (template) =>
-  function render(req, res) {
-    const Main = (props) => <MainPage {...props} />;
+export const render = (template: any) =>
+  function render(req: Request, res: Response) {
+    const Main = (props: any) => <MainPage {...props} />;
 
     const state = store.getState();
     const { fetchData } = state;

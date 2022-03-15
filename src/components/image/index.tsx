@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import SkeletonImage from '../skeleton/skeletonImage';
 
-const Image = ({ alt, src, src2x, width, height, className }) => {
+interface Image {
+  alt: string;
+  src: string;
+  width: number | string;
+  height: number | string;
+  className: string;
+}
+
+const Image = ({ alt, src, width, height, className }: Image) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const handleImage = (value) => {
-    setImageLoaded(value);
+  const handleImage = () => {
+    setImageLoaded(true);
   };
 
   return (
     <>
-      {!imageLoaded && <SkeletonImage className='skeleton' borderRadius={8} />}
+      {!imageLoaded && <SkeletonImage className='skeleton' />}
 
       <img
         alt={alt}
@@ -18,7 +26,6 @@ const Image = ({ alt, src, src2x, width, height, className }) => {
         src={src}
         width={width}
         height={height}
-        srcSet={src2x ? `${src2x} 2x` : null}
         onLoad={handleImage}
       />
     </>

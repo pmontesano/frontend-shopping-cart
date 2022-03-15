@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children }: any) => {
   return <main className='App'>{children}</main>;
 };
 

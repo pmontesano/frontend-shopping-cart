@@ -12,7 +12,7 @@ interface Checkout {
   /**
    * Returns the value of all cart products with the discounts applied.
    */
-  total(price): number;
+  total(price: number): number;
 }
 
 class Checkout implements Checkout {
@@ -21,10 +21,10 @@ class Checkout implements Checkout {
     this.cart = cart;
   }
 
-  scan(code): any {
+  scan(code: string): any {
     const newItem = this.products
-      .filter((x) => x.code === code)
-      .map((item) => ({
+      .filter((x: any) => x.code === code)
+      .map((item: any) => ({
         price: item.price,
         qty: item.quantity.qty,
         code: item.code,
@@ -56,7 +56,7 @@ class Checkout implements Checkout {
 
   getDiscount(code: string) {
     let discount = 0;
-    this.cart.find((x) => {
+    this.cart.find((x: any) => {
       if (x.code === code) {
         discount = x.discount;
         return Math.abs(discount);

@@ -3,20 +3,22 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 
+interface ModalProps {
+  modalOpen: boolean;
+  handleModalClose: Function;
+  children: any;
+}
+
 export default function ModalComponent({
   modalOpen,
   handleModalClose,
   children,
-  width,
-  height,
-}) {
+}: ModalProps) {
   const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: width,
-    height: height,
     bgcolor: 'background.paper',
     borderRadius: '4px',
     boxShadow: 24,
