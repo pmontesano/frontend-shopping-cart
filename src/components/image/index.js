@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SkeletonImage from '../skeleton/skeletonImage';
 
-const Image = ({ alt, src, src2x, className }) => {
+const Image = ({ alt, src, src2x, width, height, className }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImage = (value) => {
+    setImageLoaded(value);
+  };
+
   return (
-    <img
-      alt={alt}
-      className={className}
-      src={src}
-      srcSet={src2x ? `${src2x} 2x` : null}
-    />
+    <>
+      {!imageLoaded && <SkeletonImage className='skeleton' borderRadius={8} />}
+
+      <img
+        alt={alt}
+        className={className}
+        src={src}
+        width={width}
+        height={height}
+        srcSet={src2x ? `${src2x} 2x` : null}
+        onLoad={handleImage}
+      />
+    </>
   );
 };
 

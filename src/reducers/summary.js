@@ -6,7 +6,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  loading: false,
+  products: [],
 };
 
 export const summaryReducer = (state = initialState, action) => {

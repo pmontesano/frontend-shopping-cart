@@ -1,0 +1,61 @@
+{
+  "shoppingCart": {
+    "title": "Shopping cart",
+    "products": [
+      {
+        "image": {
+          "src": "/static/images/shirt.png",
+          "src2x": "/static/images/shirt2x.jpg",
+          "alt": "Shirt"
+        },
+        "title": "Shirt",
+        "id": "X7R2OPX",
+        "code": "TSHIRT",
+        "price": {
+          "amount": 20,
+          "currency": "€"
+        },
+        "quantity": {
+          "qty": 1,
+          "available_qty": 10
+        }
+      },
+      {
+        "image": {
+          "src": "/static/images/mug.png",
+          "src2x": "/static/images/mug2x.jpg",
+          "alt": "Mug"
+        },
+        "title": "Mug",
+        "id": "X2G2OPZ",
+        "code": "MUG",
+        "price": {
+          "amount": 5,
+          "currency": "€"
+        },
+        "quantity": {
+          "qty": 1,
+          "available_qty": 10
+        }
+      },
+      {
+        "image": {
+          "src": "/static/images/cap.png",
+          "src2x": "/static/images/cap2x.jpg",
+          "alt": "Cap"
+        },
+        "title": "Cap",
+        "id": "X3W2OPY",
+        "code": "CAP",
+        "price": {
+          "amount": 10,
+          "currency": "€"
+        },
+        "quantity": {
+          "qty": 1,
+          "available_qty": 10
+        }
+      }
+    ]
+  }
+}

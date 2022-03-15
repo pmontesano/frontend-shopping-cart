@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { increaseQty, decreaseQty } from '../../actions/quantity';
+import { increaseQty, decreaseQty, setQty } from '../../actions/quantity';
 
 const Quantity = ({ className, id, quantity }) => {
   const dispatch = useDispatch();
 
-  const initialState = useSelector((state) => state);
-
   const { qty, available_qty: availableQuantity } = quantity;
-
-  console.log('initialState', initialState.products);
 
   return (
     <div className={className}>
@@ -20,7 +16,7 @@ const Quantity = ({ className, id, quantity }) => {
       >
         -
       </button>
-      <input type='text' className='product-quantity' value={qty} />
+      <input type='number' className='product-quantity' value={qty} readOnly />
       <button
         disabled={qty === availableQuantity}
         className='count'

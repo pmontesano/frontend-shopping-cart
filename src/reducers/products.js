@@ -2,6 +2,7 @@ import {
   PRODUCTS_DATA,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
+  SET_QUANTITY,
 } from '../actions/types';
 
 const initialState = {
@@ -61,6 +62,30 @@ export const productsReducer = (state = initialState, action) => {
           loading: false,
         };
       }
+
+    case SET_QUANTITY:
+      if (
+        state.productsList.find((product) => product.id === action.payload.id)
+      ) {
+        const items = state.productsList.map((x) => {
+          x.id === action.payload.id
+            ? {
+                ...x,
+                quantity: {
+                  ...x.quantity,
+                  qty: action.payload.quantity,
+                },
+              }
+            : x;
+        });
+
+        return {
+          ...state,
+          productsList: [...items],
+          loading: false,
+        };
+      }
+
     default:
       return state;
   }

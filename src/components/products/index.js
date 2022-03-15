@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Item from '../item';
 import Quantity from '../quantity';
 import Price from '../price';
 import Total from '../total';
+import ModalComponent from '../modal';
+import ProductDetail from './detail';
 
 const Products = ({ title, products }) => {
-  console.log('products-->', products);
-
   const { productsList } = products;
+
+  const [productState, setProductState] = useState([]);
+  const [modalOpen, setmodalOpen] = useState(false);
+  const handleModalOpen = () => {
+    setmodalOpen(true);
+  };
+
+  const handleOnClick = (product) => {
+    setProductState(product);
+    handleModalOpen();
+  };
+
+  const handleModalClose = () => {
+    return setmodalOpen(false);
+  };
 
   const tableList = [
     { title: 'Product details', name: 'product' },
@@ -15,6 +30,12 @@ const Products = ({ title, products }) => {
     { title: 'Price', name: 'price' },
     { title: 'Total', name: 'total' },
   ];
+
+  const ModalView = ({ product }) => (
+    <ModalComponent modalOpen={modalOpen} handleModalClose={handleModalClose}>
+      <ProductDetail {...product} />
+    </ModalComponent>
+  );
 
   return (
     <section className='products'>
@@ -37,6 +58,7 @@ const Products = ({ title, products }) => {
                   title={product.title}
                   id={product.id}
                   image={product.image}
+                  handleClick={() => handleOnClick(product)}
                 />
               ),
               name: 'product',
@@ -70,6 +92,7 @@ const Products = ({ title, products }) => {
           );
         })}
       </ul>
+      {modalOpen && <ModalView product={productState} />}
     </section>
   );
 };
