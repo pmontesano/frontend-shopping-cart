@@ -1,6 +1,6 @@
 # frontend-shopping-cart
 
-> This is web application Frontend.
+> This is a Frontend challenge 
 
 ## Environment setup
 
