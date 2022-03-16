@@ -2,6 +2,8 @@ interface Checkout {
   products: any;
   cart: any;
   promotion: any;
+  totalItems: number;
+  totalPrice: number;
 
   /**
    * Scans a product adding it to the current cart.
@@ -9,6 +11,17 @@ interface Checkout {
    * @returns itself to allow function chaining
    */
   scan(code: string): this;
+
+  /**
+   * Apply the discount value for each item product.
+   */
+  applyDiscount(code: string, qty: number, total: number, price: number): any;
+
+  /**
+   * Scans the code and return the discount
+   */
+  getDiscount(code: string): number;
+
   /**
    * Returns the value of all cart products with the discounts applied.
    */
@@ -37,7 +50,17 @@ class Checkout implements Checkout {
         ),
       }));
 
-    this.cart.push(...newItem);
+    this.cart.items.push(...newItem);
+    const totalItems = this.cart.items
+      .map((p: any) => p.qty)
+      .reduce((a: number, b: number) => a + b, 0);
+
+    const totalPrice = this.cart.items
+      .map((p: any) => p.total)
+      .reduce((a: number, b: number) => a + b, 0);
+
+    this.cart.totalItems = totalItems;
+    this.cart.totalPrice = totalPrice;
     return this;
   }
 
@@ -56,7 +79,7 @@ class Checkout implements Checkout {
 
   getDiscount(code: string) {
     let discount = 0;
-    this.cart.find((x: any) => {
+    this.cart.items.find((x: any) => {
       if (x.code === code) {
         discount = x.discount;
         return Math.abs(discount);

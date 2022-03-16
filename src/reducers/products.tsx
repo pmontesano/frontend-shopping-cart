@@ -1,5 +1,5 @@
 import {
-  PRODUCTS_DATA,
+  PRODUCTS_COMPLETE,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
   SET_QUANTITY,
@@ -12,7 +12,7 @@ const initialState = {
 
 export const productsReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case PRODUCTS_DATA:
+    case PRODUCTS_COMPLETE:
       return {
         ...state,
         productsList: [...action.payload],

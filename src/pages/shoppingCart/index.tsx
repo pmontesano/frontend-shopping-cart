@@ -16,12 +16,12 @@ const ShoppingCart = ({ title, products }: ShoppingCart) => {
     dispatch(getProduts(products));
   }, []);
 
-  const productsState = useSelector((state: RootStateOrAny) => state.products);
+  const state = useSelector((state: RootStateOrAny) => state);
 
   return (
     <>
-      <Products title={title} products={productsState} />
-      <Summary />
+      <Products title={title} {...state} />
+      <Summary {...state} />
     </>
   );
 };
