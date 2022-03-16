@@ -29,13 +29,12 @@ interface Checkout {
 }
 
 class Checkout implements Checkout {
-  constructor(products: any, cart: any) {
-    this.products = products;
+  constructor(cart: any) {
     this.cart = cart;
   }
 
   scan(code: string): any {
-    const newItem = this.products
+    const newItem = this.cart.products
       .filter((x: any) => x.code === code)
       .map((item: any) => ({
         price: item.price,

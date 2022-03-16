@@ -9,30 +9,23 @@ const Summary = () => {
 
   const cart = {
     items: [],
+    products: productsList ? productsList : [],
     totalItems: 0,
     totalPrice: 0,
   };
 
   /**
    * Instance new Checkout
-   * @param productsList Product object list
    * @param cart Cart object
    */
-  const co = new Checkout(productsList, cart);
+  const co = new Checkout(cart);
   co.scan('MUG').scan('TSHIRT').scan('CAP');
 
-  const summary = {
-    totalItems: cart.totalItems,
-    totalPrice: cart.totalPrice,
-    mugOffer: co.getDiscount('MUG'),
-    shirtOffer: co.getDiscount('TSHIRT'),
-  };
-
-  const totalCartPrice = co.total(summary?.totalPrice);
+  const totalCartPrice = co.total(cart.totalPrice);
 
   const discountList = [
-    { title: '2x1 Mug offer', price: summary?.mugOffer },
-    { title: 'x3 Shirt offer', price: summary?.shirtOffer },
+    { title: '2x1 Mug offer', price: co.getDiscount('MUG') },
+    { title: 'x3 Shirt offer', price: co.getDiscount('TSHIRT') },
     { title: 'Promo code', price: 0 },
   ];
 
@@ -41,11 +34,9 @@ const Summary = () => {
       <h1 className='main'>Order Summary</h1>
       <ul className='summary-items wrapper border'>
         <li>
-          <span className='summary-items-number'>
-            {summary?.totalItems} Items
-          </span>
+          <span className='summary-items-number'>{cart?.totalItems} Items</span>
           <span className='summary-items-price'>
-            {formatPrice(summary?.totalPrice)}
+            {formatPrice(cart?.totalPrice)}
           </span>
         </li>
       </ul>
