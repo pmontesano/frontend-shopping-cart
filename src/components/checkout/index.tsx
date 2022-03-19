@@ -67,28 +67,31 @@ class Checkout implements Checkout {
     let discount = 0;
 
     if (code === 'TSHIRT' && qty >= 3) {
-      return (discount = (total * 5) / 100);
+      return Math.abs((discount = (total * 5) / 100));
     } else if (code === 'MUG' && qty >= 2) {
       const discount = Math.round(qty / 2) * price - total;
-      return discount;
+      return Math.abs(discount);
     }
 
-    return discount;
+    return Math.abs(discount);
   }
 
   getDiscount(code: string) {
     let discount = 0;
-    this.cart.items.find((x: any) => {
+    this.cart.items.filter((x: any) => {
       if (x.code === code) {
         discount = x.discount;
-        return Math.abs(discount);
+        return discount;
       }
     });
+
     return Math.abs(discount);
   }
 
   total(price: number) {
-    const totalDiscounts = this.getDiscount('MUG') + this.getDiscount('TSHIRT');
+    const totalDiscounts = this.cart.items
+      .map((x: any) => x.discount)
+      .reduce((a: number, b: number) => a + b, 0);
     const total = price - totalDiscounts;
     return total;
   }
