@@ -1,4 +1,4 @@
-# frontend-shopping-cart
+# Frontend-shopping-cart
 
 > This is a Frontend challenge 
 
