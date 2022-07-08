@@ -10,7 +10,7 @@ This is an App created with React and Redux.
 
 It is a small shopping cart that can grow easy :)
 
-Enjoy it! 🔥
+Enjoy it! 
 
 ## 🔧 Getting started
 
@@ -20,7 +20,7 @@ You need to have installed [Node.js](https://nodejs.org/), and then:
 2. `$ npm i`
 3. `$ npm start` + open `http://localhost:3000/`
 
-## ⛩️ Structure
+## Structure
 
 ```
 shopping-cart
